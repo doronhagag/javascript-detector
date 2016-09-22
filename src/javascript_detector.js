@@ -59,7 +59,7 @@ class JavascriptDetector {
      *
      */
     _customReplaces(str) {
-        let wrongRef = str.match(/} var (.*)=.*getElementsByName.*x=.*?\((.*?)\)/, '');
+        let wrongRef = str.match(/} var (.*)=.*getElementsByName.*x=.*?\((.*?)\)/);
         if (null !== wrongRef)
             str = str.replace(wrongRef[2], wrongRef[1]);
 
@@ -73,6 +73,7 @@ class JavascriptDetector {
     _parse(jsDetectionHTML) {
         return new Promise((resolve, reject) => {
             let markup = this._getEncoded(jsDetectionHTML);
+
             markup.functions = this._customReplaces(markup.functions);
 
             return JSDOM.env({
@@ -82,10 +83,16 @@ class JavascriptDetector {
                             markup.functions,
                             'return',
                             markup.callback
-                        ].join(' '));
+                        ].join(' ')),
+                        sessionKey = jsDetectionHTML.match(/document\.cookie="(.*?)=(.*?);/);
+
                     try {
-                        let ID = getID(window);
-                        resolve({value: ID});
+                        let genPid = getID(window);
+                        resolve({
+                            key: sessionKey[1],
+                            value: (0 < sessionKey[2].indexOf('genPid')) ? 'genPid' : sessionKey[2],
+                            genPid: genPid
+                        });
                     } catch(e) {
                         reject({error: e});
                     }
