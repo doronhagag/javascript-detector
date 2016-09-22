@@ -1,8 +1,9 @@
 {
   "name": "javascript-detector",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "## find me?",
-  "main": "src/javascript_detector.js",
+  "main": "dist/javascript_detector.min.js",
+  "module": "src/javascript_detector.js",
   "scripts": {
     "test": "LC_ALL=C && node_modules/.bin/babel-node node_modules/.bin/isparta cover _mocha"
   },
