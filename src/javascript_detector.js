@@ -10,7 +10,7 @@ class JavascriptDetector {
      *
      */
     isEncoded(html) {
-        return 0 > html.indexOf('<title></title>');
+        return 0 > html.indexOf('Incident Id');
     }
 
 
