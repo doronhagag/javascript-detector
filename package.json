@@ -1,13 +1,16 @@
 {
   "name": "javascript-detector",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "## find me?",
   "main": "src/javascript_detector.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "LC_ALL=C && node_modules/.bin/babel-node node_modules/.bin/isparta cover _mocha"
   },
   "author": "Doron",
   "license": "MIT",
+  "dependencies": {
+    "jsdom": "^9.5.0"
+  },
   "devDependencies": {
     "babel-cli": "^6.11.4",
     "babel-core": "^6.13.2",
@@ -17,6 +20,9 @@
     "babel-preset-es2015": "^6.13.2",
     "babel-preset-stage-0": "^6.5.0",
     "babel-register": "^6.11.6",
+    "chai": "~3.5.0",
+    "chai-as-promised": "^5.2.0",
+    "core-js": "^2.4.1",
     "eslint": "^3.3.1",
     "eslint-config-airbnb": "*",
     "gulp": "^3.9.1",
@@ -27,11 +33,37 @@
     "gulp-replace": "^0.5.4",
     "gulp-util": "^3.0.7",
     "gulp-watch": "^4.3.9",
-    "jsdom": "^9.5.0",
+    "isparta": "^4.0.0",
+    "isparta-loader": "^2.0.0",
+    "istanbul": "^0.4.5",
+    "istanbul-instrumenter-loader": "^1.0.0",
+    "karma": "^1.3.0",
+    "karma-chai": "~0.1.0",
+    "karma-chai-as-promised": "^0.1.2",
+    "karma-chai-plugins": "~0.8.0",
+    "karma-chai-sinon": "~0.1.5",
+    "karma-chrome-launcher": "~2.0.0",
+    "karma-coverage": "^1.0.0",
+    "karma-firefox-launcher": "~1.0.0",
+    "karma-junit-reporter": "^1.1.0",
+    "karma-mocha": "~1.1.1",
+    "karma-mocha-debug": "^0.1.2",
+    "karma-mocha-reporter": "~2.2.0",
+    "karma-phantomjs2-launcher": "~0.5.0",
+    "karma-sinon": "~1.0.4",
+    "karma-sinon-chai": "~1.2.2",
+    "karma-sourcemap-loader": "~0.3.5",
+    "karma-webpack": "~1.8.0",
+    "mocha": "~3.0.2",
+    "mocha-junit-reporter": "^1.12.0",
+    "mocha-webpack": "^0.6.0",
+    "node-webkit": "0.0.0",
     "npm-check-updates": "^2.8.0",
+    "phantomjs2": "2.2.0",
     "require-dir": "^0.3.0",
     "run-sequence": "^1.2.2",
-    "webpack": "^1.13.1",
+    "sinon": "^1.17.3",
+    "webpack": "^1.13.2",
     "webpack-dev-server": "^1.14.1"
   },
   "repository": {
@@ -41,8 +73,5 @@
   "bugs": {
     "url": "https://github.com/doronhagag/javascript-detector/issues"
   },
-  "homepage": "https://github.com/doronhagag/javascript-detector#readme",
-  "dependencies": {
-    "cheerio": "^0.22.0",
-  }
+  "homepage": "https://github.com/doronhagag/javascript-detector#readme"
 }
