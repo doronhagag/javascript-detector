@@ -87,12 +87,20 @@ class JavascriptDetector {
                         sessionKey = jsDetectionHTML.match(/document\.cookie="(.*?)=(.*?);/);
 
                     try {
-                        let genPid = getID(window);
-                        resolve({
-                            key: sessionKey[1],
-                            value: (0 < sessionKey[2].indexOf('genPid')) ? 'genPid' : sessionKey[2],
-                            genPid: genPid
-                        });
+                        let genPid = getID(window),
+                            output = {
+                                PRID: {
+                                    value: genPid
+                                }
+                            };
+
+                        if (0 > sessionKey[2].indexOf('genPid')) {
+                            output[sessionKey[1]] = {
+                                value: sessionKey[2]
+                            };
+                        }
+
+                        resolve(output);
                     } catch(e) {
                         reject({error: e});
                     }
