@@ -24,7 +24,7 @@ describe('Execute all encoded templates using JS Detector - E2E', () => {
             let getID = detector.getID(data);
 
             return getID.then(ID => {
-                expect(ID.value).to.equal(solution);
+                expect(ID.genPid).to.equal(solution);
             });
         });
     });
