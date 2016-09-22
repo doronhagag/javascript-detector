@@ -1,9 +1,8 @@
 {
   "name": "javascript-detector",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "## find me?",
-  "main": "dist/javascript_detector.min.js",
-  "module": "src/javascript_detector.js",
+  "main": "src/javascript_detector.js",
   "scripts": {
     "test": "LC_ALL=C && node_modules/.bin/babel-node node_modules/.bin/isparta cover _mocha"
   },
@@ -24,6 +23,7 @@
     "chai": "~3.5.0",
     "chai-as-promised": "^5.2.0",
     "core-js": "^2.4.1",
+    "del": "^2.2.2",
     "eslint": "^3.3.1",
     "eslint-config-airbnb": "*",
     "gulp": "^3.9.1",

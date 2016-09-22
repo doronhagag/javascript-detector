@@ -9,10 +9,10 @@ let fs = require('fs'),
  *
  */
 const babel = {
-    entry: path.resolve(PATH_BASE, 'src/nadlanist-crawler.js'),
+    entry: path.resolve(PATH_BASE, 'src/javascript_detector.js'),
 
     output: {
-        path: path.resolve(PATH_BASE, 'dist/js'),
+        path: path.resolve(PATH_BASE, 'dist'),
         filename: 'jd.min.js',
         libraryTarget: 'umd',
         pathinfo: false
