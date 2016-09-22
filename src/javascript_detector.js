@@ -97,4 +97,4 @@ class JavascriptDetector {
 
 }
 
-export default JavascriptDetector;
+module.exports = JavascriptDetector;
