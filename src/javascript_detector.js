@@ -1,7 +1,7 @@
 const fs = require('fs'),
       jsDOM = require('jsdom');
 
-const ENCODE_TYPES = {
+const ENCODING_TYPE = {
     BASIC: 'BASIC',
     ADVNACED: 'ADVNACED'
 };
@@ -16,10 +16,10 @@ class JavascriptDetector {
      */
     getEncodingMethod(html) {
         if (0 < html.indexOf('Connecting')) {
-            return ENCODE_TYPES.ADVNACED;
+            return ENCODING_TYPE.ADVNACED;
         } else
         if (0 < html.indexOf('Incident Id')) {
-            return ENCODE_TYPES.BASIC;
+            return ENCODING_TYPE.BASIC;
         }
 
         return false;
@@ -125,4 +125,4 @@ class JavascriptDetector {
 }
 
 module.exports = JavascriptDetector;
-module.exports.ENCODE_TYPES = ENCODE_TYPES;
+module.exports.ENCODING_TYPE = ENCODING_TYPE;
