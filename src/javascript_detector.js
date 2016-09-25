@@ -109,13 +109,15 @@ class JavascriptDetector {
                     try {
                         let genPid = getID(window),
                             output = {
-                                PRID: {
-                                    value: genPid
+                                cookies: {
+                                    PRID: {
+                                        value: genPid
+                                    }
                                 }
                             };
 
                         if (0 > sessionKey[2].indexOf('genPid')) {
-                            output[sessionKey[1]] = {
+                            output.cookies[sessionKey[1]] = {
                                 value: sessionKey[2]
                             };
                         }
