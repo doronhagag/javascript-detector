@@ -2,8 +2,10 @@ const fs = require('fs'),
       jsDOM = require('jsdom');
 
 const ENCODING_TYPE = {
+    EMPTY: 'EMPTY',
     BASIC: 'BASIC',
-    ADVNACED: 'ADVNACED'
+    ADVNACED: 'ADVNACED',
+    CAPTCHA: 'CAPTCHA'
 };
 
 
@@ -15,11 +17,17 @@ class JavascriptDetector {
      *
      */
     getEncodingMethod(html) {
+        if (100 > html.length) {
+            return ENCODING_TYPE.EMPTY;
+        } else
         if (0 < html.indexOf('Connecting')) {
             return ENCODING_TYPE.ADVNACED;
         } else
         if (0 < html.indexOf('Incident Id')) {
             return ENCODING_TYPE.BASIC;
+        } else
+        if (0 < html.indexOf('captcha')) {
+            return ENCODING_TYPE.CAPTCHA;
         }
 
         return false;
