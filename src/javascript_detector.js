@@ -15,11 +15,11 @@ class JavascriptDetector {
      *
      */
     getEncodingMethod(html) {
+        if (0 < html.indexOf('Connecting')) {
+            return ENCODE_TYPES.ADVNACED;
+        } else
         if (0 < html.indexOf('Incident Id')) {
             return ENCODE_TYPES.BASIC;
-        } else
-        if (0 < html.indexOf('Connecting Site...')) {
-            return ENCODE_TYPES.ADVNACED;
         }
 
         return false;

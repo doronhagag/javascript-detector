@@ -1,6 +1,6 @@
 {
   "name": "javascript-detector",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "## find me?",
   "main": "src/javascript_detector.js",
   "scripts": {
