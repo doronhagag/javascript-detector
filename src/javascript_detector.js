@@ -1,5 +1,10 @@
 const fs = require('fs'),
-      JSDOM = require('jsdom');
+      jsDOM = require('jsdom');
+
+const ENCODE_TYPES = {
+    BASIC: 'BASIC',
+    ADVNACED: 'ADVNACED'
+};
 
 
 /**
@@ -9,8 +14,15 @@ class JavascriptDetector {
     /**
      *
      */
-    isEncoded(html) {
-        return 0 > html.indexOf('Incident Id');
+    getEncodingMethod(html) {
+        if (0 < html.indexOf('Incident Id')) {
+            return ENCODE_TYPES.BASIC;
+        } else
+        if (0 < html.indexOf('Connecting Site...')) {
+            return ENCODE_TYPES.ADVNACED;
+        }
+
+        return false;
     }
 
 
@@ -76,7 +88,7 @@ class JavascriptDetector {
 
             markup.functions = this._customReplaces(markup.functions);
 
-            return JSDOM.env({
+            return jsDOM.env({
                 html: markup.html,
                 done: (err, window) => {
                     let getID = new Function('window', [
@@ -113,3 +125,4 @@ class JavascriptDetector {
 }
 
 module.exports = JavascriptDetector;
+module.exports.ENCODE_TYPES = ENCODE_TYPES;
